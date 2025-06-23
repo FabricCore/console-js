@@ -1,0 +1,13 @@
+- console.error
+- console.warn
+- console.log
+- console.debug
+- console.info
+- console.trace
+- console.assert
+- console.clear
+- console.count
+- console.countReset
+- console.time
+- console.timeLog
+- console.timeEnd
