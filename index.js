@@ -9,11 +9,10 @@ let logger = LoggerFactory.getLogger(Core.MOD_ID);
 
 let Scriptable = Packages.org.mozilla.javascript.Scriptable;
 
-function print(content) {
+function print(prefix, content) {
     let s = content.toString();
-    if (s instanceof Scriptable) {
-        s = JSON.toString(content);
-    }
+
+    s = s.split('\n').map(s => prefix + s).join('\n');
 
     if (MinecraftClient.getInstance().player != null) {
         MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(s));
@@ -23,37 +22,37 @@ function print(content) {
 function error(content) {
     content ??= "";
     logger.error(content);
-    print("\u00A78[\u00A7c\u00A7lERROR\u00A78] \u00A77" + content);
+    print("\u00A78[\u00A7c\u00A7lERROR\u00A78] \u00A77", content);
 }
 
 function warn(content) {
     content ??= "";
     logger.warn(content);
-    print("\u00A78[\u00A7e\u00A7lWARN\u00A78] \u00A77" + content);
+    print("\u00A78[\u00A7e\u00A7lWARN\u00A78] \u00A77", content);
 }
 
 function info(content) {
     content ??= "";
     logger.info(content);
-    print("\u00A78[\u00A7a\u00A7lINFO\u00A78] \u00A77" + content);
+    print("\u00A78[\u00A7a\u00A7lINFO\u00A78] \u00A77", content);
 }
 
 function debug(content) {
     content ??= "";
     logger.debug(content);
-    print("\u00A78[\u00A7d\u00A7lDEBUG\u00A78] \u00A77" + content);
+    print("\u00A78[\u00A7d\u00A7lDEBUG\u00A78] \u00A77", content);
 }
 
 function log(content) {
     content ??= "";
     logger.trace(content);
-    print("\u00A78[\u00A77\u00A7lLOG\u00A78] \u00A77" + content);
+    print("\u00A78[\u00A77\u00A7lLOG\u00A78] \u00A77", content);
 }
 
 function trace(content) {
     content ??= "";
     logger.trace(content);
-    print("\u00A78[\u00A78\u00A7lTRACE\u00A78] \u00A77" + content);
+    print("\u00A78[\u00A78\u00A7lTRACE\u00A78] \u00A77", content);
 }
 
 function assert(condition, content) {
