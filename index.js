@@ -4,7 +4,7 @@ let net = Packages.ws.siri.jscore.mapping.JSPackage.getRoot().net;
 let MinecraftClient = net.minecraft.client.MinecraftClient;
 let Text = net.minecraft.text.Text;
 
-let LoggerFactory = Packages.org.slf4j.LoggerFactory;
+let LoggerFactory = org.slf4j.LoggerFactory;
 let logger = LoggerFactory.getLogger(Core.MOD_ID);
 
 let Scriptable = Packages.org.mozilla.javascript.Scriptable;
