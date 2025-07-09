@@ -1,3 +1,4 @@
+- console.print
 - console.error
 - console.warn
 - console.log

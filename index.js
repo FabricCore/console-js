@@ -7,15 +7,18 @@ let Text = net.minecraft.text.Text;
 let LoggerFactory = org.slf4j.LoggerFactory;
 let logger = LoggerFactory.getLogger(Core.MOD_ID);
 
-let Scriptable = Packages.org.mozilla.javascript.Scriptable;
-
 function print(prefix, content) {
     let s = content.toString();
 
-    s = s.split('\n').map(s => prefix + s).join('\n');
+    s = s
+        .split("\n")
+        .map((s) => prefix + s)
+        .join("\n");
 
     if (MinecraftClient.getInstance().player != null) {
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(s));
+        MinecraftClient.getInstance()
+            .inGameHud.getChatHud()
+            .addMessage(Text.literal(s));
     }
 }
 
@@ -70,7 +73,7 @@ let counters = {};
 function count(label) {
     if (counters[label] === undefined) counters[label] = 0;
 
-    log(`${label}: ${++counters[label]}`)
+    log(`${label}: ${++counters[label]}`);
 }
 
 function countReset(label) {
@@ -97,8 +100,6 @@ function timeEnd(label) {
     delete timers[label];
 }
 
-
-
 module.exports = {
     error,
     warn,
@@ -115,4 +116,12 @@ module.exports = {
     time,
     timeLog,
     timeEnd,
-}
+
+    print: (s) => {
+        if (MinecraftClient.getInstance().player != null) {
+            MinecraftClient.getInstance()
+                .inGameHud.getChatHud()
+                .addMessage(Text.literal(s));
+        }
+    },
+};
