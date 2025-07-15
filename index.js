@@ -12,7 +12,7 @@ function print(prefix, content) {
 
     s = s
         .split("\n")
-        .map((s) => prefix + s)
+        .map((s) => `${prefix}${s}`)
         .join("\n");
 
     if (MinecraftClient.getInstance().player != null) {
@@ -121,7 +121,7 @@ module.exports = {
         if (MinecraftClient.getInstance().player != null) {
             MinecraftClient.getInstance()
                 .inGameHud.getChatHud()
-                .addMessage(Text.literal(s));
+                .addMessage(Text.literal(`${s}`));
         }
     },
 };
